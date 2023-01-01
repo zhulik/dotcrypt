@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require "json"
+
 require "zeitwerk"
+
+require "dhall"
 
 loader = Zeitwerk::Loader.for_gem
 

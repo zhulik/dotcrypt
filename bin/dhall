@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "dotcrypt"
+
+config = Dotcrypt::Dhall.load(File.read(ARGV.first))
+
+# puts(JSON.pretty_generate(config))
+
+puts(JSON.pretty_generate(Dotcrypt::Flattener.call(config)))
+
+# puts(Dotcrypt::Compiler.(config))
