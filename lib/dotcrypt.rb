@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "dotcrypt/version"
+require "zeitwerk"
+
+loader = Zeitwerk::Loader.for_gem
+
+loader.setup
 
 class Dotcrypt::Error < StandardError
   # Your code goes here...
