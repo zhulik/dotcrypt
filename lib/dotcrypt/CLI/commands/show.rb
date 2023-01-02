@@ -28,7 +28,7 @@ module Dotcrypt::Cli::Commands::Show
 
       option :format, aliases: :f,
                       type: :string,
-                      enum: ["json", "env"],
+                      enum: Dotcrypt::Serializers::SERIALIZERS.keys.map(&:to_s),
                       default: "json",
                       desc: "Output format."
 

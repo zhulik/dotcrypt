@@ -3,7 +3,8 @@
 module Dotcrypt::Serializers
   SERIALIZERS = {
     json: Dotcrypt::Serializers::JSON,
-    env: Dotcrypt::Serializers::ENV
+    env: Dotcrypt::Serializers::ENV,
+    yaml: Dotcrypt::Serializers::YAML
   }.freeze
 
   def self.for(format)

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "json"
+require "yaml"
 
 require "zeitwerk"
 require "dhall"
@@ -10,7 +11,8 @@ loader = Zeitwerk::Loader.for_gem
 
 loader.inflector.inflect(
   "env" => "ENV",
-  "json" => "JSON"
+  "json" => "JSON",
+  "yaml" => "YAML"
 )
 
 loader.setup

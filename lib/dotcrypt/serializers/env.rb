@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "shellwords"
-
 class Dotcrypt::Serializers::ENV < Dotcrypt::Serializers::Serializer
   def call
     # TODO: validate variable names
