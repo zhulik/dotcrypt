@@ -17,6 +17,9 @@ loader.inflector.inflect(
 
 loader.setup
 
+module Dotcrypt
+end
+
 class Dotcrypt::Error < StandardError
   # Your code goes here...
 end
