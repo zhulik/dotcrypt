@@ -2,11 +2,6 @@
 
 module Dotcrypt::Cli::Commands::Show
   class Handler
-    SERIALIZERS = {
-      json: Dotcrypt::Serializers::Json,
-      env: Dotcrypt::Serializers::Env
-    }.freeze
-
     def initialize(file, **options)
       @file = file
       @options = options
@@ -24,12 +19,12 @@ module Dotcrypt::Cli::Commands::Show
       end
     end
 
-    def serializer = SERIALIZERS[@options[:format].to_sym]
+    def serializer = Dotcrypt::Serializers.for(@options[:format])
   end
 
   def self.included(thor) # rubocop:disable Metrics/MethodLength
     thor.class_eval do
-      desc "show DHALL", "shows dhall file"
+      desc "show DHALL", "converts dhall file into various formats"
 
       option :format, aliases: :f,
                       type: :string,

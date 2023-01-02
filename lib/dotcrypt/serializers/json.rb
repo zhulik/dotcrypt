@@ -2,6 +2,6 @@
 
 require "shellwords"
 
-class Dotcrypt::Serializers::Json < Dotcrypt::Serializers::Serializer
+class Dotcrypt::Serializers::JSON < Dotcrypt::Serializers::Serializer
   def call = JSON.pretty_generate(@config)
 end
