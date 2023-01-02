@@ -3,8 +3,8 @@
 require "json"
 
 require "zeitwerk"
-
 require "dhall"
+require "thor"
 
 loader = Zeitwerk::Loader.for_gem
 

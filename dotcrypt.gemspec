@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "dhall", "~> 0.5.0"
+  spec.add_dependency "thor", "~> 1.2.0"
   spec.add_dependency "zeitwerk", "~> 2.6.0"
 
   # For more information and examples about making a new gem, check out our
