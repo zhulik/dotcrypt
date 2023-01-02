@@ -7,5 +7,9 @@ module Dotcrypt::Dhall
     def load(dhall)
       Dhall.load(dhall).sync.as_hash
     end
+
+    def load_from(file)
+      load(File.read(file))
+    end
   end
 end

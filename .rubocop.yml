@@ -37,5 +37,8 @@ Style/Documentation:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Style/WordArray:
+  EnforcedStyle: brackets
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
