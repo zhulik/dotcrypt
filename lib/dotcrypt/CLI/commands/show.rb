@@ -18,12 +18,12 @@ module Dotcrypt::Cli::Commands::Show
                        default: false,
                        desc: "Whether to flatten the output. Always enabled for `env` format"
 
-      def show = Handler.new(options).call
+      def show = Handler.new(**options).call
     end
   end
 
   class Handler
-    def initialize(options)
+    def initialize(**options)
       @options = options
     end
 
