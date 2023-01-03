@@ -18,8 +18,30 @@ loader.inflector.inflect(
 loader.setup
 
 module Dotcrypt
-end
+  DEFAULT_NAME = ".env.dhall"
 
-class Dotcrypt::Error < StandardError
-  # Your code goes here...
+  class Error < StandardError
+  end
+
+  def self.setup(path: find_dotcrypt)
+    Dotcrypt::Dhall.load_from(path).then do |c|
+      Dotcrypt::Flattener.call(c).then do |f|
+        ENV.merge!(f)
+        return f
+      end
+    end
+  end
+
+  def self.find_dotcrypt
+    dir = Dir.getwd
+    loop do
+      raise ".env.dhall is noot found" if dir == "/"
+
+      path = File.join(dir, DEFAULT_NAME)
+
+      return path if File.exist?(path)
+
+      dir = File.expand_path("..", dir)
+    end
+  end
 end
