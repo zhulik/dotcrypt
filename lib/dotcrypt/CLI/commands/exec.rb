@@ -5,7 +5,7 @@ module Dotcrypt::Cli::Commands::Exec
     thor.class_eval do
       include Dotcrypt::Cli::Commands::Globals
 
-      desc "exec COMMAND", "exec command a command with dhall env"
+      desc "exec COMMAND", "exec command a command with env"
 
       def exec(*command) = Handler.new(command, **options).call
     end
@@ -24,7 +24,7 @@ module Dotcrypt::Cli::Commands::Exec
     private
 
     def env
-      @env ||= Dotcrypt::Dhall.load_from(@options[:file]).then do |c|
+      @env ||= Dotcrypt::Jsonnet.load_from(@options[:file]).then do |c|
         # TODO: validate variable names
         Dotcrypt::Flattener.call(c, separator: @options[:separator])
       end

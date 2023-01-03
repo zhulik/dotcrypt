@@ -10,8 +10,8 @@ module Dotcrypt::Cli::Commands::Globals
 
       option :file, aliases: :f,
                     type: :string,
-                    default: ".env.dhall",
-                    desc: "Dhall file to read."
+                    default: ".env.jsonnet",
+                    desc: "Jsonnet file to read."
     end
   end
 end

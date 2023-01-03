@@ -5,7 +5,7 @@ module Dotcrypt::Cli::Commands::Show
     thor.class_eval do
       include Dotcrypt::Cli::Commands::Globals
 
-      desc "show", "converts a dhall file into various formats"
+      desc "show", "converts a jsonnet file into various formats"
 
       option :output, aliases: :o,
                       type: :string,
@@ -32,7 +32,7 @@ module Dotcrypt::Cli::Commands::Show
     private
 
     def config
-      @config ||= Dotcrypt::Dhall.load_from(@options[:file]).then do |c|
+      @config ||= Dotcrypt::Jsonnet.load_from(@options[:file]).then do |c|
         next Dotcrypt::Flattener.call(c, separator: @options[:separator]) if @options[:flatten]
 
         c

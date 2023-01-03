@@ -4,7 +4,7 @@ require "json"
 require "yaml"
 
 require "zeitwerk"
-require "dhall"
+require "jsonnet"
 require "thor"
 
 loader = Zeitwerk::Loader.for_gem
@@ -18,13 +18,13 @@ loader.inflector.inflect(
 loader.setup
 
 module Dotcrypt
-  DEFAULT_NAME = ".env.dhall"
+  DEFAULT_NAME = ".env.jsonnet"
 
   class Error < StandardError
   end
 
   def self.setup(path: find_dotcrypt)
-    Dotcrypt::Dhall.load_from(path).then do |c|
+    Dotcrypt::Jsonnet.load_from(path).then do |c|
       Dotcrypt::Flattener.call(c).then do |f|
         ENV.merge!(f)
         return f
@@ -35,7 +35,7 @@ module Dotcrypt
   def self.find_dotcrypt
     dir = Dir.getwd
     loop do
-      raise ".env.dhall is noot found" if dir == "/"
+      raise ".env.jsonnet is noot found" if dir == "/"
 
       path = File.join(dir, DEFAULT_NAME)
 
